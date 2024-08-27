@@ -214,6 +214,20 @@
 		},
 		{
 			"name": "Put-UpdateBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -312,13 +326,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUri}}/booking/33",
+					"raw": "{{baseUri}}/booking/32",
 					"host": [
 						"{{baseUri}}"
 					],
 					"path": [
 						"booking",
-						"33"
+						"32"
 					]
 				}
 			},
@@ -326,6 +340,26 @@
 		},
 		{
 			"name": "Delete-Booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -345,13 +379,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{baseUri}}/booking/33",
+					"raw": "{{baseUri}}/booking/32",
 					"host": [
 						"{{baseUri}}"
 					],
 					"path": [
 						"booking",
-						"33"
+						"32"
 					]
 				}
 			},

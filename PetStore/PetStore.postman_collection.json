@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "d001819b-73ec-49f3-8610-e44c154f0d8a",
+		"name": "PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37875059"
+	},
+	"item": [
+		{
+			"name": "Get-FindByStatus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUri}}/v2/pet/findByStatus?status={{status}}",
+					"host": [
+						"{{baseUri}}"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "{{status}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post-UploadImage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Administrator/Downloads/labrador-dog.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUri}}/v2/pet/9223372036854775000/uploadImage",
+					"host": [
+						"{{baseUri}}"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"9223372036854775000",
+						"uploadImage"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "status",
+			"value": "available",
+			"type": "string"
+		}
+	]
+}
